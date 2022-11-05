@@ -1,7 +1,6 @@
 package co.com.smartworkout.nutririonalplan.usecase.plannutricional;
 
 import co.com.smartworkout.nutririonalplan.model.plannutricional.PlanNutricional;
-import co.com.smartworkout.nutririonalplan.model.plannutricional.ValoracionNutricional;
 import co.com.smartworkout.nutririonalplan.model.plannutricional.gateways.PlanNutricionalRepository;
 import lombok.RequiredArgsConstructor;
 

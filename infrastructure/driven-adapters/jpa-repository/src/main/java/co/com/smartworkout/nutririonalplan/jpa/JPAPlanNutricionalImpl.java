@@ -1,8 +1,8 @@
 package co.com.smartworkout.nutririonalplan.jpa;
 
 
+import co.com.smartworkout.nutririonalplan.jpa.helper.PlanNutricionalEntityToModel;
 import co.com.smartworkout.nutririonalplan.model.plannutricional.PlanNutricional;
-import co.com.smartworkout.nutririonalplan.model.plannutricional.ValoracionNutricional;
 import co.com.smartworkout.nutririonalplan.model.plannutricional.gateways.PlanNutricionalRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,17 +20,23 @@ public class JPAPlanNutricionalImpl implements PlanNutricionalRepository {
 
     @Override
     public PlanNutricional consultarPorIdCliente(String idCliente) {
-        return jpaPlanNutricionalRepositoryAdapter.findByIdCliente(idCliente);
+        return PlanNutricionalEntityToModel.convert(
+                jpaPlanNutricionalRepositoryAdapter.findByIdCliente(idCliente)
+        );
     }
 
     @Override
     public PlanNutricional consultarPorIdNutricionista(String idNutricionista) {
-        return jpaPlanNutricionalRepositoryAdapter.findByIdNutricionista(idNutricionista);
+        return PlanNutricionalEntityToModel.convert(
+                jpaPlanNutricionalRepositoryAdapter.findByIdNutricionista(idNutricionista)
+        );
     }
 
     @Override
     public void actualizar(String idPlanNutricional, PlanNutricional planNutricional) {
-        PlanNutricional planNutricionalConsultado = jpaPlanNutricionalRepositoryAdapter.findById(idPlanNutricional);
+        PlanNutricional planNutricionalConsultado = PlanNutricionalEntityToModel.convert(
+                jpaPlanNutricionalRepositoryAdapter.findByIdNutricionista(idPlanNutricional)
+        );
 
         if (planNutricionalConsultado == null) {
             throw new RuntimeException("No existe el plan nutricional");

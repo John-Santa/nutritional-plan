@@ -3,7 +3,10 @@ import co.com.smartworkout.nutririonalplan.model.plannutricional.PlanNutricional
 import co.com.smartworkout.nutririonalplan.usecase.plannutricional.PlanNutricionalUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/api/plan-nutricional", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -12,13 +15,18 @@ public class ApiRest {
     private final PlanNutricionalUseCase planNutricionalUseCase;
 
     @GetMapping("/{id}")
-    public void getPlanNutricional(@PathVariable String id) {
-        planNutricionalUseCase.consultarPorIdCliente(id);
+    public ResponseEntity<PlanNutricional> getPlanNutricional(@PathVariable String id) {
+        return ResponseEntity
+                .ok(planNutricionalUseCase.consultarPorIdCliente(id));
     }
 
     @PostMapping
-    public void crearPlanNutricional(@RequestBody PlanNutricional planNutricional) {
+    public ResponseEntity<String> crearPlanNutricional(@RequestBody PlanNutricional planNutricional) {
         planNutricionalUseCase.crear(planNutricional);
+        return ResponseEntity
+                .created(URI.create("/api/plan-nutricional/" + planNutricional.getIdCliente()))
+                .build();
+
     }
 
     @PutMapping("/{id}")

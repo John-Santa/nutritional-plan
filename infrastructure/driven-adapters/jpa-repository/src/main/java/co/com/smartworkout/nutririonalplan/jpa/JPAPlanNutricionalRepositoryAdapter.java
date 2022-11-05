@@ -24,11 +24,11 @@ public class JPAPlanNutricionalRepositoryAdapter extends AdapterOperations<
         super(repository, mapper, d -> mapper.map(d, PlanNutricional.class/* change for domain model */));
     }
 
-    public PlanNutricional findByIdCliente(String idCliente) {
+    public PlanNutricionalEntity findByIdCliente(String idCliente) {
         return repository.findByIdCliente(idCliente);
     }
 
-    public PlanNutricional findByIdNutricionista(String idNutricionista) {
+    public PlanNutricionalEntity findByIdNutricionista(String idNutricionista) {
         return repository.findByIdNutricionista(idNutricionista);
     }
 }
