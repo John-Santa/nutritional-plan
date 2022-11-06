@@ -2,6 +2,7 @@ package co.com.smartworkout.nutririonalplan.jpa.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Data
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,6 +22,8 @@ public class ValoracionNutricionalEntity {
     @GeneratedValue(generator = "system-uuid")
     @Column(name = "id")
     private String id;
+    @Column(name = "id_plan_nutricional")
+    private String idPlanNutricional;
     @Column(table = "valoracion_nutricional", name = "fecha_creacion")
     private String fechaCreacion;
     @Column(table = "valoracion_nutricional", name = "biceps")
@@ -50,7 +54,19 @@ public class ValoracionNutricionalEntity {
     private Double perimetroMuslo;
     @Column(table = "valoracion_nutricional", name = "pierna")
     private Double pierna;
+    @Column(table = "valoracion_nutricional", name = "peso")
+    private Double peso;
+    @Column(table = "valoracion_nutricional", name = "estatura")
+    private Double estatura;
     @Column(table = "valoracion_nutricional", name = "diagnostico")
     private String diagnostico;
+    @Column(table = "valoracion_nutricional", name = "sumatoria_pliegues")
+    private Double sumatoriaPliegues;
+    @Column(table = "valoracion_nutricional", name = "porcentaje_yuhasz")
+    private Double porcentajeYuhasz;
+    @Column(table = "valoracion_nutricional", name = "mlg")
+    private Double MLG;
+    @Column(table = "valoracion_nutricional", name = "mg")
+    private Double MG;
 
 }
