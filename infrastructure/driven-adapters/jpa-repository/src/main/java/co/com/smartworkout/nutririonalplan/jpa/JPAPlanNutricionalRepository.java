@@ -2,7 +2,6 @@ package co.com.smartworkout.nutririonalplan.jpa;
 
 
 import co.com.smartworkout.nutririonalplan.jpa.entity.PlanNutricionalEntity;
-import co.com.smartworkout.nutririonalplan.model.plannutricional.PlanNutricional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
